@@ -1,0 +1,193 @@
+@font-face {
+    font-family: "PathwayGothicOne-Regular";
+    src: url("../font/PathwayGothicOne-Regular.ttf")format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+body {
+    background-image: url('../bg2.jpg');
+    background-repeat: no-repeat;
+    background-position: center 60px;
+    background-size: 100% auto;
+    background-attachment: fixed;
+}
+
+.rell-shot {
+    background-color: #fff;
+    padding: 10px 6px 6px;
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,.3);
+    height: 220px;
+}
+.owl-carousel.owl-loaded {
+    display: block;
+}
+.owl-carousel {
+    width: 100%;
+}
+.owl-item {
+    -webkit-tap-highlight-color: transparent;
+}
+.topMainBlock {
+    width: 1250px;
+    height: 350px;
+    margin: 20px auto;
+    background-color: #e6ebe9;
+    font-size: 0;
+}
+.topMainBlockName {
+    text-align: center;
+    font-size: 28px;
+}
+.topImagePosition {
+    width: 149px;
+    height: 180px;
+    display: inline-block;
+    padding: 5px;
+    border-style: groove;
+}
+.topImageBorder {
+    border-style: groove;
+    border-width: 3px;
+    border-color: white;
+}
+.topMainBlockImage {
+    background-color: #a1a6a4;
+}
+
+.MainBlock {
+    width: 1250px;
+    height: 1500px;
+    margin: 20px auto;
+    background-color: #eaf3f1;
+    opacity: 1;
+    background-color: rgba(0,0,0,.8);
+    border-radius: 5px 5px 0 0;
+    padding: 4px 4px 0;
+}
+
+.LeftBlock {
+    width: 950px;
+    height: 1000px;
+    /*background-color: white;*/
+    padding: 30px 0 0 0;
+    display: inline-block;
+}
+.item {
+    width: 230px;
+    height: 380px;
+    background-color: rgba(0,0,0,.4);
+    background-color: #e0e0e0;
+    position: relative;
+    padding: 3px 1px 1px 1px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #a1a6a4;
+    display: inline-block;
+    margin-bottom: 19px;
+}
+.img-pos {
+    margin-left: 0;
+}
+.short-t-or, .short-t, .short-c {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.short-t {
+    display: block;
+    font-size: 24px;
+}
+.short-t {
+    color: #181818;
+    font-family: "PathwayGothicOne-Regular", Arial, sans-serif;
+}
+.short-t:hover {
+    color: red;
+}
+.short {
+    text-align: center;
+    width: 24%;
+    margin: 0 .5% 20px;
+    float: left;
+}
+a {
+     color: #e70c2f;
+     text-decoration: none;
+ }
+a, .ser-i:before, .news-i:before, .ser-i .fa, .news-i .fa, .ps-link, .short-mask, .rel:before, .highslide:before {
+    transition: color .3s,background-color .3s,opacity .3s;
+}
+
+.RightBlock {
+    width: 250px;
+    height: 1000px;
+    /*background-color: yellow;*/
+    display: inline-block;
+}
+.tooltip-name {
+    display: inline-block; /* Строчно-блочный элемент */
+    position: relative; /* Относительное позиционирование */
+}
+.tooltip-name:hover::after {
+    transition: background-color 1s linear;
+    content: attr(data-title); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    left: 5px; bottom: -57px; /* Положение подсказки */
+    /*right: 14px;*/
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    background: rgba(129, 133, 125, 0.9); /* Полупрозрачный цвет фона */
+    color: #fff; /* Цвет текста */
+    text-align: center; /* Выравнивание текста по центру */
+    font-family: "PathwayGothicOne-Regular", Arial, sans-serif; /* Гарнитура шрифта */
+    font-size: 20px; /* Размер текста подсказки */
+    padding: 5px 10px; /* Поля */
+    border: 1px solid white; /* Параметры рамки */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.short-mask {
+    position: relative;
+    left: 2px;
+    top: -360px;
+    width: 210px;
+    height: 300px;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+    color: #fff;
+    opacity: 0;
+}
+.rate {
+    width: 100px;
+    height: 100px;
+    margin-top: 50%;
+    margin-left: 55px;
+    background-color: black;
+    position: relative;
+    display: block;
+}
+.MainImagePosition {
+    width: 210px;
+    height: 300px;
+    display: inline-block;
+    padding: 5px;
+    border-style: groove;
+}
+a.tooltip span {
+    display			: none;
+    padding			: 2px 3px;
+    margin-left		: 8px;
+    width			: 130px;
+}
+a.tooltip:hover span {
+    display			: inline;
+    position		: absolute;
+    background		: #ffffff;
+    border			: 1px solid #cccccc;
+    color			: #6c6c6c;
+}

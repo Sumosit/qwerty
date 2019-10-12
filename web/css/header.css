@@ -1,0 +1,146 @@
+@font-face {
+    font-family: "PathwayGothicOne-Regular";
+    src: url("../font/PathwayGothicOne-Regular.ttf")format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+.center {
+    min-width: 320px;
+    max-width: 1240px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 200;
+}
+.head-in {
+    height: 60px;
+    padding-left: 0;
+}
+.header-button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.header-button {
+    border: none;
+    background-color: #fcfcfc;
+    cursor: pointer;
+    padding-right: 20px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.0), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.header-bg-btn {
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.0), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.header-bg-btn:hover .MainBlock {
+    opacity: 0;
+    background-color: black;
+}
+.header {
+    width: 100%;
+    height: 60px;
+    background-color: #fcfcfc;
+    position: fixed;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    display: block;
+}
+.header-menu {
+    width: 1250px;
+    height: 100%;
+    padding-left: 277px;
+}
+* {
+    background: 0 0;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Lora);
+body {margin:0;}
+.nav {
+    width: 100%;
+    margin: 0 auto 30px -5px;
+}
+.ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.topmenu > .li {
+    height: 0;
+    display: inline-block;
+    margin-right: 20px;
+    position: relative;
+}
+.topmenu > .li:last-child {
+    margin-right: 0;
+}
+.a {
+    display: block;
+    padding: 0 15px;
+    text-decoration: none;
+    outline: none;
+    font-family: 'Lora', serif;
+    transition: .5s linear;
+}
+.fa {
+    font-family: "FontAwesome";
+    color: inherit;
+    padding-left: 10px;
+}
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 400px;
+    height: 178px;
+    z-index: 10;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    border-radius: 3px;
+}
+.three .ul {
+    background: #fcfcfc;
+}
+.three .ul .a {
+    color: black;
+    font-family: "PathwayGothicOne-Regular", Arial, sans-serif;
+    font-size: 26px;
+}
+.three .submenu {
+    visibility: hidden;
+    opacity: 0;
+    background: #fcfcfc;
+}
+.three .ul .li:hover .submenu {
+    visibility: visible;
+    opacity: 1;
+}
+.submenu .li .a {
+    border-bottom: 1px solid rgba(255,255,255,.3);
+    color: black;
+}
+.topmenu a:hover {
+    background-color: #ffa494;
+    outline: none;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.sr-menu {
+    width: 500px;
+    display: flex;
+}
+.sr-btn {
+    display: inline-block;
+    background-color: white;
+}
+.sr-btn:hover {
+    background-color: #ffa494;
+}

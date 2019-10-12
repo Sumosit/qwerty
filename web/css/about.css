@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "PathwayGothicOne-Regular";
+    src: url("/font/PathwayGothicOne-Regular.ttf")format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+.field {
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 1200px;
+    height: 800px;
+    background-color: #eeefea;
+    border-radius: 60px;
+}
+.text {
+    padding: 100px 20px 20px 20px;
+    font-family: "PathwayGothicOne-Regular", serif;
+    font-size: 19px;
+}

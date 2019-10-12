@@ -1,0 +1,70 @@
+@font-face {
+    font-family: "PathwayGothicOne-Regular";
+    src: url("../font/PathwayGothicOne-Regular.ttf")format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+body {
+    background-image: url('../bg2.jpg');
+    background-repeat: no-repeat;
+    background-position: center 60px;
+    background-size: 100% auto;
+    background-attachment: fixed;
+}
+.MainBlock {
+    width: 1250px;
+    height: 1800px;
+    margin: 20px auto;
+    background-color: #eaf3f1;
+    opacity: 1;
+    background-color: rgba(0,0,0,.8);
+    border-radius: 5px 5px 0 0;
+    padding: 4px 4px 0;
+}
+.full-desc {
+    margin: 35px 0;
+    background-color: rgba(255,255,255,.99);
+    padding: 15px;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,.3);
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+.full-title {
+    position: relative;
+}
+.title {
+    margin-top: -10px;
+}
+.sinfo {
+    margin-top: -13px;
+    margin-bottom: -13px;
+}
+.short-c {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.nolink {
+    color: black;
+    text-overflow: ellipsis;
+}
+.nolink:hover {
+    color: #b0b0b0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+table tr {
+    height: 100px;
+}
+.div-t {
+    word-wrap: break-word;
+    width:1100px;
+    font-weight: 500;
+    font-size: 15px;
+}
+.div-a {
+    font-family: "PathwayGothicOne-Regular", Arial, sans-serif;
+    font-size: 26px;
+    padding-bottom: 10px;
+}
