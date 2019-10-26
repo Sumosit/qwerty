@@ -27,79 +27,45 @@
           });
       </script>
     <jsp:include page="/views/header.jsp"/>
-      <div style="padding-top: 60px">
+      <div style="padding-top: 60px; background-color: rgba(0,0,0,0.4)">
     <div class = "MainBlock">
-        <jsp:include page="/views/topHeader.jsp"/>
-
+<%--        <jsp:include page="/views/topHeader.jsp"/>--%>
+        <form style="margin: 19px 0 0 18px" action="/home" method="post">
+            <div class="md-form mt-0 sr-menu" style="padding-top: 10px; margin-left: 13px">
+                <input name="search" style="width: 300px; display: inline-block" class="form-control" type="text" placeholder="Search" aria-label="Search">
+                <button style="margin-left: 10px" value="search" name="action" type="submit" class="sr-btn">Search</button>
+            </div>
+        </form>
         <div style="display: flex;">
             <div class="LeftBlock">
-                <div style="padding: 0 0 0 10px;">
-                    <div class="item short">
-                        <a class="img-pos" href="./home/anime?page=${MainImageLink1}&chapter=embed/${MainAddressLink1}/&season=1&seria=1"><img src="${link1}" width="210" height="300"></a>
-                        <div class="short-text">
-                            <a class="short-t" style="text-decoration: none; outline: none" href="./home/anime?page=${MainImageLink1}&chapter=embed/${MainAddressLink1}/&season=1&seria=1">${MainImageLink1}</a>
-                            <div class="short-c">${GenreLink1}</div>
-                        </div>
-                    </div>
-                    <div class="item short">
-                            <a class="img-pos" href="./home/anime?page=${MainImageLink2}&chapter=embed/${MainAddressLink2}/&season=1&seria=1"><img src="${link2}" width="210" height="300"></a>
-                            <div class="short-text">
-                                <a class="short-t" style="text-decoration: none; outline: none" href="./home/anime?page=${MainImageLink2}&chapter=embed/${MainAddressLink2}/&season=1&seria=1">${MainImageLink2}</a>
-                                <div class="short-c">${GenreLink2}</div>
-                            </div>
-                    </div>
-                    <div class="item short">
-                            <a class="img-pos" href="./home/anime?page=${MainImageLink3}&chapter=embed/${MainAddressLink3}/&season=1&seria=1"><img src="${link3}" width="210" height="300"></a>
-                            <div class="short-text">
-                                <a class="short-t" style="text-decoration: none; outline: none" href="./home/anime?page=${MainImageLink3}&chapter=embed/${MainAddressLink3}/&season=1&seria=1">${MainImageLink3}</a>
-                                <div class="short-c">${GenreLink3}</div>
-                            </div>
-                    </div>
-                    <div class="item short">
-                        <a class="img-pos" href="./home/anime?page=${MainImageLink4}&chapter=embed/${MainAddressLink4}/&season=1&seria=1"><img src="${link4}" width="210" height="300"></a>
-                            <div class="short-text">
-                                <a class="short-t" style="text-decoration: none; outline: none" href="./home/anime?page=${MainImageLink4}&chapter=embed/${MainAddressLink4}/&season=1&seria=1">${MainImageLink4}</a>
-                                <div class="short-c">${GenreLink4}</div>
-                            </div>
-                    </div>
-                    <div class="item short">
-                        <a class="img-pos" href="./home/anime?page=${MainImageLink5}&chapter=embed/${MainAddressLink5}/&season=1&seria=1"><img src="${link5}" width="210" height="300"></a>
-                            <div class="short-text">
-                                <a class="short-t" style="text-decoration: none; outline: none" href="./home/anime?page=${MainImageLink5}&chapter=embed/${MainAddressLink5}/&season=1&seria=1">${MainImageLink5}</a>
-                                <div class="short-c">${GenreLink5}</div>
-                            </div>
-                    </div>
-                    <div class="item short">
-                        <a class="img-pos" href="./home/anime?page=${MainImageLink6}&chapter=embed/${MainAddressLink6}/&season=1&seria=1"><img src="${link6}" width="210" height="300"></a>
-                            <div class="short-text">
-                                <a class="short-t" style="text-decoration: none; outline: none" href="./home/anime?page=${MainImageLink6}&chapter=embed/${MainAddressLink6}/&season=1&seria=1">${MainImageLink6}</a>
-                                <div class="short-c">${GenreLink6}</div>
-                            </div>
-                    </div>
-                    <div class="item short">
-                        <a class="img-pos" href="./home/anime?page=${MainImageLink7}&chapter=embed/${MainAddressLink7}/&season=1&seria=1"><img src="${link7}" width="210" height="300"></a>
-                            <div class="short-text">
-                                <a class="short-t" style="text-decoration: none; outline: none" href="./home/anime?page=${MainImageLink7}&chapter=embed/${MainAddressLink7}/&season=1&seria=1">${MainImageLink7}</a>
-                                <div class="short-c">${GenreLink7}</div>
-                            </div>
-                    </div>
-                    <div class="item short">
-                            <a class="img-pos" href="./home/anime?page=${MainImageLink8}&chapter=embed/${MainAddressLink8}/&season=1&seria=1"><img src="${link8}" width="210" height="300"></a>
-                            <div class="short-text">
-                                <a class="short-t" style="text-decoration: none; outline: none" href="./home/anime?page=${MainImageLink8}&chapter=embed/${MainAddressLink8}/&season=1&seria=1">${MainImageLink8}</a>
-                                <div class="short-c">${GenreLink8}</div>
-                            </div>
-                    </div>
-                    <div class="item short">
-                            <a class="img-pos" href="./home/anime?page=${MainImageLink9}&chapter=embed/${MainAddressLink9}/&season=1&seria=1"><img src="${link9}" width="210" height="300"></a>
-                            <div class="short-text">
-                                <a class="short-t" style="text-decoration: none; outline: none" href="./home/anime?page=${MainImageLink9}&chapter=embed/${MainAddressLink9}/&season=1&seria=1">${MainImageLink9}</a>
-                                <div class="short-c">${GenreLink9}</div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            <div class="RightBlock"> </div>
+                <div class="grid-container">
+                    <%
+                        ArrayList<AnimeName> animeNames = (ArrayList<AnimeName>) request.getAttribute("AnimeName");
+                        if (animeNames!=null) {
+                            for (AnimeName c : animeNames) {
+                                out.print("<div class=\"grid-item\" style=\"margin-left: 10px\">");
+                                out.print("<div class=\"card\" style=\"background-color: rgba(0,0,0,0)\">");
+                                out.print("<div class=\"front\">");
+                                out.print("<div class=\"views-f\">");
+                                out.print("<span>Views: "+c.getViews()+"</span>");
+                                out.print("</div>");
+                                out.print("<img src=\""+c.getImage()+"\" width=\"260\" height=\"350\">");
+                                out.print("</div>");
+                                out.print("<div class=\"back\">");
+                                out.print("<div class=\"back-content\">");
+                                out.print("<a style=\"text-decoration: none; outline: none\" href=\"/home/anime?page="+c.getName()+"&chapter=embed/"+c.getAddress()+"}/&season=1&seria=1\">");
+                                out.print("<h4 style=\"text-decoration: none; outline: none; color: #2c3e50;\">"+c.getName()+"</h4>");
+                                out.print("<div class=\"sm\">\n" +
+                                        "                                            <span>"+c.getHistory()+"</span>\n" +
+                                        "                                        </div>\n" +
+                                        "                                    </a>\n" +
+                                        "                                </div>\n" +
+                                        "                            </div>\n" +
+                                        "                        </div>\n" +
+                                        "                    </div>");
+                            }
+                        }
+                    %>
         </div>
     </div>
     </div>

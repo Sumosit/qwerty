@@ -18,7 +18,7 @@
     <div style="padding-top: 60px;">
         <div style="z-index: 1041;" hei class = "MainBlock">
             <div style="padding-top: 10px;">
-                <div class="menus"><ul><li><a href="/goa_v1_war_exploded/home?exit=0" class="menu-q" style="text-decoration: none; outline: none;">Home</a></li></ul></div>
+                <div class="menus"><ul><li><a href="/home?exit=0" class="menu-q" style="text-decoration: none; outline: none;">Home</a></li></ul></div>
                 <div class="cols" style="display: flex">
                     <div class="cont">
                         <div style="z-index: 200">
@@ -85,7 +85,7 @@
                         <div class="f-poster">
                             <img src = "../${AnimeImage}" width="216px" height="297px">
                             <div class="temp-menu">
-                                <form action="/goa_v1_war_exploded/home/anime?page=${AnimeName}&chapter=${Chapter}&season=1&seria=1" method="post">
+                                <form action="/home/anime?page=${AnimeName}&chapter=${Chapter}&season=1&seria=1" method="post">
                                     <input type="submit" name="action" value="Add bookmark">
                                     <input style="padding-right: 10px" type="submit" name="action" value="Delete bookmark">
                                     <input type="submit" name="action" value="Delete anime">

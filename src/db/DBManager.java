@@ -1,12 +1,15 @@
 package db;
 
-import java.awt.print.Book;
-import java.sql.*;
+import com.mysql.cj.x.protobuf.MysqlxCrud;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class DBManager {
     private Connection conn;
-    private Account account = new Account();
     public DBManager(){}
 
     public void connect() {
@@ -77,6 +80,18 @@ public class DBManager {
             st.setInt(1, id);
             st.execute();
             st.close();
+            delComments(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delComments(int id) {
+        try {
+            PreparedStatement st = conn.prepareStatement("DELETE FROM fcomments WHERE id=(?)");
+            st.setInt(1, id);
+            st.execute();
+            st.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -116,6 +131,7 @@ public class DBManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     public void delBookMark(String name, String anime, String season, String seria) {
@@ -139,9 +155,9 @@ public class DBManager {
             st.setString(2, name);
             st.setString(3, pass);
 
-            account.setEmail(email);
-            account.setName(name);
-            account.setPass(pass);
+//            account.setEmail(email);
+//            account.setName(name);
+//            account.setPass(pass);
 
             st.executeUpdate();
             st.close();
@@ -151,32 +167,34 @@ public class DBManager {
     }
 
     public void exitAccount() {
-        account.setEmail(null);
-        account.setName(null);
-        account.setPass(null);
+//        account.setEmail(null);
+//        account.setName(null);
+//        account.setPass(null);
     }
 
-    public void getAccount(String name, String pass) {
+    public Account checkAccount(String name, String password) {
+        Account account = new Account();
         try {
-            PreparedStatement st = conn.prepareStatement("SELECT * FROM accounts WHERE name=(?) and password=(?)");
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM accounts WHERE name= ? and password= ?");
             st.setString(1, name);
-            st.setString(2, pass);
+            st.setString(2, password);
             ResultSet rs = st.executeQuery();
             while (rs.next()){
                 account.setName(rs.getString("name"));
                 account.setEmail(rs.getString("email"));
+                account.setPass(rs.getString("password"));
             }
-
-            st.executeUpdate();
+            rs.close();
             st.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return account;
     }
 
-    public String getAcName(){
-        return account.getName();
-    }
+//    public String getAcName(){
+//        return account.getName();
+//    }
 
     public void setViews(int views, String anName) {
         try {
@@ -191,9 +209,38 @@ public class DBManager {
         }
     }
 
+    public ArrayList<AnimeName> searchAnime(String name) {
+        ArrayList<AnimeName> result = new ArrayList<>();
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM anime WHERE REPLACE(UPPER(Name), ' ', '')= ? " +
+                    "or REPLACE (UPPER(Name), ' ', '') LIKE ?");
+            st.setString(1, name);
+            st.setString(2, "%"+name+"%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()){
+                result.add(new AnimeName(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getInt("views"),
+                        rs.getString("image"),
+                        rs.getString("genre"),
+                        rs.getString("history"),
+                        rs.getString("Date"),
+                        rs.getString("producer"),
+                        rs.getString("links"),
+                        rs.getString("address")
+                ));
+            }
+            rs.close();
+            st.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public ArrayList<AnimeName> getAllAnimeDate() {
         ArrayList<AnimeName> result = new ArrayList<>();
-        result.add(new AnimeName(0, null, 0, null, null, null, null, null, null, null));
         try {
             PreparedStatement st = conn.prepareStatement("SELECT * FROM anime ORDER BY birth DESC");
             ResultSet rs = st.executeQuery();
@@ -233,7 +280,6 @@ public class DBManager {
 
     public ArrayList<AnimeName> getAllAnime() {
         ArrayList<AnimeName> result = new ArrayList<>();
-        result.add(new AnimeName(0, null, 0, null, null, null, null, null, null, null));
         try {
             PreparedStatement st = conn.prepareStatement("SELECT * FROM anime ORDER BY Views DESC");
             ResultSet rs = st.executeQuery();

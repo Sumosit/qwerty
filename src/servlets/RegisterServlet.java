@@ -1,6 +1,6 @@
 package servlets;
 
-import db.AnimeName;
+import db.Account;
 import db.DBManager;
 
 import javax.servlet.RequestDispatcher;
@@ -21,19 +21,20 @@ public class RegisterServlet extends HttpServlet {
     }
     private String dispatcher = "/views/register.jsp";
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email, pass, name;
-        if (dbManager.getAcName().equals("")){
-            email = request.getParameter("email");
-            name = request.getParameter("name");
-            pass = request.getParameter("pass");
-            dbManager.setAccount(email, name, pass);
-            response.sendRedirect("/goa_v1_war_exploded/home");
-        }
+//        String email, pass, name;
+////        if (dbManager.getAcName().equals("")){
+//            email = request.getParameter("email");
+//            name = request.getParameter("name");
+//            pass = request.getParameter("pass");
+//            dbManager.setAccount(email, name, pass);
+//            response.sendRedirect("/home");
+////        }
+        response.sendRedirect("/home");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String acname = dbManager.getAcName();
-        request.setAttribute("AcName", acname);
+//        String acname = dbManager.getAcName();
+//        request.setAttribute("AcName", acname);
         RequestDispatcher rd = request.getRequestDispatcher(dispatcher);
         rd.forward(request, response);
     }

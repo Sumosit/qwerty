@@ -1,7 +1,7 @@
 package servlets;
 
+import db.Account;
 import db.AnimeName;
-import db.DBManager;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import db.DBManager;
 
 @WebServlet(name = "TemplateServlet", value = "/home/anime")
 public class TemplateServlet extends HttpServlet {
@@ -22,7 +23,7 @@ public class TemplateServlet extends HttpServlet {
     }
     // ad - add/delete
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String ad="", acname = dbManager.getAcName(), anime, chapter, season, seria, link;
+        String ad="", anime, chapter, season, seria, link; // acname = dbManager.getAcName()
         ad = request.getParameter("action");
         anime = request.getParameter("page");
         chapter = request.getParameter("chapter");
@@ -30,22 +31,22 @@ public class TemplateServlet extends HttpServlet {
         seria = s;
         String par;
         String ppage = request.getParameter("page"), pchap = request.getParameter("chapter");
-        par = "http://localhost:8080/goa_v1_war_exploded/home/anime?page=".concat(ppage).concat("&chapter=")
+        par = "http://localhost:8080/home/anime?page=".concat(ppage).concat("&chapter=")
                 .concat(pchap).concat("&season=").concat(season).concat("&seria=").concat(seria);
         link = par;
-        if ("Add bookmark".equals(ad)) {
-            dbManager.setBookMark(acname, anime, link, season, seria);
-        } else if ("Delete bookmark".equals(ad)) {
-            dbManager.delBookMark(acname, anime, season, seria);
-        } else if ("Delete anime".equals(ad)) {
-            dbManager.delAnime(anime);
-        }
+//        if ("Add bookmark".equals(ad)) {
+//            dbManager.setBookMark(acname, anime, link, season, seria);
+//        } else if ("Delete bookmark".equals(ad)) {
+//            dbManager.delBookMark(acname, anime, season, seria);
+//        } else if ("Delete anime".equals(ad)) {
+//            dbManager.delAnime(anime);
+//        }
 
         response.sendRedirect(par);
     }
 // http://localhost:8080/goa_v1_war_exploded/home/anime?page=OnePiece&chapter=embed/9649/&season=1&seria=1
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String anime, chapter, season, seria, link, acname = dbManager.getAcName();
+        String anime, chapter, season, seria, link;
         anime = request.getParameter("page");
         chapter = request.getParameter("chapter");
         season = request.getParameter("season");
@@ -63,7 +64,12 @@ public class TemplateServlet extends HttpServlet {
         request.setAttribute("AnimeChapter", link);
         request.setAttribute("AnimeSeria1", seria);
         request.setAttribute("Chapter", request.getParameter("chapter"));
-        request.setAttribute("AcName", acname);
+        if (request.getSession(false) != null) {
+            Account account = (Account) request.getSession().getAttribute("user_data");
+            if (account != null){
+                request.setAttribute("AcName", account.getName());
+            }
+        }
         RequestDispatcher rd = request.getRequestDispatcher("/views/template.jsp");
         rd.forward(request, response);
     }

@@ -16,7 +16,7 @@
 </head>
 <body>
     <jsp:include page="header.jsp"/>
-    <div style="padding-top: 60px;">
+    <div style="padding-top: 60px; background-color: rgba(0,0,0,0.4);">
         <div style="z-index: 1041; height: 100%" class = "MainBlock">
             <div class="full-desc">
                 <header class="full-title">
@@ -25,7 +25,7 @@
                             <div class="full-text" style="padding-left: 30px">
                                 <table class="table table-striped tablesorter d-inline-block text-truncate">
                                     <thead>
-                                    <th width="1200 px" scope="col">Forum</th>
+                                    <th width="1200px" scope="col">Forum</th>
                                     </thead>
                                     <tbody>
                                     <%
@@ -34,8 +34,8 @@
                                         if (bk!=null) {
                                             for (Forum c : bk) {
                                                 out.print("<tr class='table-i'>");
-                                                out.print("<td style='max-width: 100%;'><a class='nolink' style=' text-decoration: none; outline: none;' href='/goa_v1_war_exploded/home/paper?id="+ c.getId() +"'><div><strong><p class='title'>"+c.getTitle()+"</p></strong><p class='sinfo'>"+c.getSinfo()+"</p></div></a></td>");
-                                                out.print("<td><form action='/goa_v1_war_exploded/home/forum?del="+c.getId()+"' method='post'>"+
+                                                out.print("<td style='max-width: 100%;'><a class='nolink' style=' text-decoration: none; outline: none;' href='/home/paper?id="+ c.getId() +"'><div><strong><p class='title'>"+c.getTitle()+"</p></strong><p class='sinfo'>"+c.getSinfo()+"</p></div></a></td>");
+                                                out.print("<td><form action='/home/forum?del="+c.getId()+"' method='post'>"+
                                                         "<input type=\"submit\" name=\"action\" value=\"Delete\">"+
                                                         "</form></td>");
                                                 out.print("</tr>");

@@ -1,6 +1,6 @@
 package servlets;
 
-import db.Account;
+import db.AnimeName;
 import db.DBManager;
 
 import javax.servlet.RequestDispatcher;
@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
-@WebServlet(name = "ContactServlet", value = "/contact")
-public class ContactServlet extends HttpServlet {
+@WebServlet(name = "SearchServlet", value = "/search")
+public class SearchServlet extends HttpServlet {
     private DBManager dbManager;
 
     public void init(){
@@ -24,13 +25,10 @@ public class ContactServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession(false) != null) {
-            Account account = (Account) request.getSession().getAttribute("user_data");
-            if (account != null){
-                request.setAttribute("AcName", account.getName());
-            }
-        }
-        RequestDispatcher rd = request.getRequestDispatcher("/views/contact.jsp");
+        String search = request.getParameter("name");
+        ArrayList<AnimeName> animeNames = dbManager.searchAnime(search);
+        request.setAttribute("AnimeName", animeNames);
+        RequestDispatcher rd = request.getRequestDispatcher("/views/home.jsp");
         rd.forward(request, response);
     }
 }

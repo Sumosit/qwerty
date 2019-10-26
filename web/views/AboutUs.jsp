@@ -20,7 +20,7 @@
 <div style="padding-top: 60px;">
     <div style="z-index: 1041; height: 100%" class = "MainBlock">
         <div style="padding-top: 10px;">
-            <div class="menus"><ul><li><a href="/goa_v1_war_exploded/home" class="menu-q" style="text-decoration: none; outline: none;">Home</a></li></ul></div>
+            <div class="menus"><ul><li><a href="/home" class="menu-q" style="text-decoration: none; outline: none;">Home</a></li></ul></div>
             <div class="cols" style="display: flex">
                 <div class="cont">
                     <div style="z-index: 200">

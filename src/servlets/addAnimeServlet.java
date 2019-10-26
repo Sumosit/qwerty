@@ -1,5 +1,6 @@
 package servlets;
 
+import db.Account;
 import db.DBManager;
 
 import javax.servlet.RequestDispatcher;
@@ -9,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 import javax.servlet.http.Part;
@@ -49,7 +49,8 @@ public class addAnimeServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        Account account = (Account) request.getSession().getAttribute("user_data");
+        request.setAttribute("AcName", account.getName());
         RequestDispatcher rd = request.getRequestDispatcher("/views/addAnime.jsp");
         rd.forward(request, response);
     }

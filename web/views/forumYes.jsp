@@ -34,7 +34,7 @@
                                         if (bk!=null) {
                                             for (Forum c : bk) {
                                                 out.print("<tr class='table-i'>");
-                                                out.print("<td style='max-width: 100%;'><a class='nolink' style=' text-decoration: none; outline: none;' href='/goa_v1_war_exploded/home/paper?id="+ c.getId() +"'><div><strong><p class='title'>"+c.getTitle()+"</p></strong><p class='sinfo'>"+c.getSinfo()+"</p></div></a></td>");
+                                                out.print("<td style='max-width: 100%;'><a class='nolink' style=' text-decoration: none; outline: none;' href='/home/paper?id="+ c.getId() +"'><div><strong><p class='title'>"+c.getTitle()+"</p></strong><p class='sinfo'>"+c.getSinfo()+"</p></div></a></td>");
                                                 out.print("</tr>");
                                             }
                                         }

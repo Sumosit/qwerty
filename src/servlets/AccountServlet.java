@@ -1,5 +1,6 @@
 package servlets;
 
+import db.Account;
 import db.Bookmarks;
 import db.DBManager;
 
@@ -25,9 +26,14 @@ public class AccountServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<Bookmarks> bk = dbManager.bookmarks(dbManager.getAcName());
-        request.setAttribute("bookmarks", bk);
-        request.setAttribute("AcName", dbManager.getAcName());
+        if (request.getSession(false) != null) {
+            Account account = (Account) request.getSession().getAttribute("user_data");
+            if (account != null){
+                request.setAttribute("AcName", account.getName());
+                ArrayList<Bookmarks> bk = dbManager.bookmarks(account.getName());
+                request.setAttribute("bookmarks", bk);
+            }
+        }
         RequestDispatcher rd = request.getRequestDispatcher("/views/account.jsp");
         rd.forward(request, response);
     }

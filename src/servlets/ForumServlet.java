@@ -1,6 +1,6 @@
 package servlets;
 
-import db.DBManager;
+import db.Account;
 import db.Forum;
 
 import javax.servlet.RequestDispatcher;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import db.DBManager;
 
 @WebServlet(name = "ForumServlet", value = "/home/forum")
 public class ForumServlet extends HttpServlet {
@@ -25,18 +25,19 @@ public class ForumServlet extends HttpServlet {
         if (del!=null) {
             dbManager.delForum(Integer.parseInt(del));
         }
-        response.sendRedirect("/goa_v1_war_exploded/home/forum");
+        response.sendRedirect("/home/forum");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<Forum> forums = dbManager.getForum();
-        request.setAttribute("AcName", dbManager.getAcName());
         request.setAttribute("forums", forums);
 
-        if (dbManager.getAcName() == null) {
+        if (request.getSession().getAttribute("user_data") == null) {
             RequestDispatcher rd = request.getRequestDispatcher("/views/forumYes.jsp");
             rd.forward(request, response);
         } else {
+            Account account = (Account) request.getSession().getAttribute("user_data");
+            request.setAttribute("AcName", account.getName());
             RequestDispatcher rd = request.getRequestDispatcher("/views/forum.jsp");
             rd.forward(request, response);
         }

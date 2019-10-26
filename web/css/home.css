@@ -9,7 +9,7 @@ body {
     background-image: url('../bg2.jpg');
     background-repeat: no-repeat;
     background-position: center 60px;
-    background-size: 100% auto;
+    background-size: cover;
     background-attachment: fixed;
 }
 
@@ -57,7 +57,7 @@ body {
 
 .MainBlock {
     width: 1250px;
-    height: 1500px;
+    height: 130%;
     margin: 20px auto;
     background-color: #eaf3f1;
     opacity: 1;
@@ -70,7 +70,7 @@ body {
     width: 950px;
     height: 1000px;
     /*background-color: white;*/
-    padding: 30px 0 0 0;
+    padding: 13px 0 0 0;
     display: inline-block;
 }
 .item {
@@ -190,4 +190,113 @@ a.tooltip:hover span {
     background		: #ffffff;
     border			: 1px solid #cccccc;
     color			: #6c6c6c;
+}
+.middle {
+    position: relative;
+    display: inline-block;
+    transform: translate(-50%, -50%);
+}
+.card {
+    cursor: pointer;
+    width: 260px;
+    height: 350px;
+}
+.front, .back {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+}
+.front img {
+    height: 100%;
+}
+.front {
+    transform: perspective(600px) rotateY(0deg);
+    transition: 0.5s;
+}
+.back {
+    background: #f1f1f1;
+    transform: perspective(600px) rotateY(180deg);
+    transition: 0.5s;
+}
+.back-content {
+    color: #2c3e50;
+    text-align: center;
+    width: 100%;
+}
+.back-content h4 {
+    margin: 15px 15px -10px 15px;
+    font-weight: bold;
+}
+.sm {
+    margin: 15px;
+}
+.sm span:before {
+    content: "";
+    display: block;
+    height: 70px;
+    position: absolute;
+    top: 280px;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff 75%)
+}
+.sm span {
+    display: block;
+    width: 230px;
+    height: 280px;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 14px;
+    transition: 0.4s;
+    border-radius:3%;
+    padding: 10px 10px 10px 15px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.sm:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 150px;
+    background: linear-gradient(transparent 60px, black 60%, #202020 10px);
+}
+.card:hover .back{
+    transition: 0.5s;
+    color: black;
+}
+.card:hover > .front {
+    transform: perspective(600px) rotateY(-180deg);
+    transition: 0.5s;
+}
+.card:hover > .back {
+    transform: perspective(600px) rotateY(0deg);
+    transition: 0.5s;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+}
+.grid-item {
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+}
+.views-f {
+    position: absolute;
+    background-color: rgba(0,0,0,0.3);
+    width: 100%;
+    height: 27px;
+    text-align: left;
+}
+.views-f span {
+    margin: 0 0 0 10px;
+    font-size: 16px;
+    color: white;
+    opacity: 1;
+    font-family: "PathwayGothicOne-Regular", Arial, sans-serif;
 }

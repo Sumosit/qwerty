@@ -1,6 +1,6 @@
 package servlets;
 
-import db.AnimeName;
+import db.Account;
 import db.DBManager;
 
 import javax.servlet.RequestDispatcher;
@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
 @WebServlet(name = "AboutUsServlet", value = "/about")
 public class AboutUsServlet extends HttpServlet {
@@ -25,8 +24,12 @@ public class AboutUsServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String acname = dbManager.getAcName();
-        request.setAttribute("AcName", acname);
+        if (request.getSession(false) != null) {
+            Account account = (Account) request.getSession().getAttribute("user_data");
+            if (account != null){
+                request.setAttribute("AcName", account.getName());
+            }
+        }
 
         RequestDispatcher rd = request.getRequestDispatcher("/views/AboutUs.jsp");
         rd.forward(request, response);
